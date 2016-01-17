@@ -9,6 +9,9 @@ class sound():
 	def play(self):
 		self.handle.looping=False
 		self.handle.play()
+	def play_wait(self):
+		self.handle.looping=False
+		self.handle.play_blocking()
 	def play_looped(self):
 		self.handle.looping=True
 		self.handle.play()
