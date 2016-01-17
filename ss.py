@@ -6,7 +6,6 @@ from sound_positioning import position_sound_1d
 import bgt_funcs
 from pyglet.window import key
 from speak import speak
-import time
 import pyglet
 m=map.map()
 me=bgt_funcs.BGTVector()
