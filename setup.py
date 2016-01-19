@@ -3,7 +3,7 @@ import platform
 from setuptools import setup, find_packages
 from glob import glob
 from distutils.core import setup
-OPTIONS = {'argv_emulation': True}
+OPTIONS = {}
 if platform.system=='Darwin':
 	import py2app
 else:
