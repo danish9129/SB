@@ -3,13 +3,13 @@ import application
 from random import randint
 import sound
 from sound_positioning import position_sound_1d
-import bgt_funcs
+import player
 from pyglet.window import key
 from speak import speak
 import pyglet
 m=map.map()
-me=bgt_funcs.BGTVector()
-en=bgt_funcs.BGTVector()
+me=player.player()
+en=player.player()
 en.x=-15
 gun=sound.sound()
 step=sound.sound()
@@ -74,7 +74,6 @@ def playerland(self):
 	step.load("sounds/steps/"+str(randint(1,5))+".wav")
 	step.play()
 def schedule_spawn():
-	print "spawning"
 	pyglet.clock.schedule_once(spawnenemy,randint(100,150)/10)
 def schedule_land():
 	pyglet.clock.schedule_once(playerland,0.9)
@@ -94,12 +93,13 @@ def on_key_press(symbol, modifiers):
 		me.x-=1
 		positions()
 	if symbol == key.RIGHT:
-		if me.jumping==0:
-			step.stop()
-			step.load("sounds/steps/"+str(randint(1,5))+".wav")
-			step.play()
-		me.x+=1
-		positions()
+		if me.x<m.maxx:
+			if me.jumping==0:
+				step.stop()
+				step.load("sounds/steps/"+str(randint(1,5))+".wav")
+				step.play()
+			me.x+=1
+			positions()
 	if symbol == key.H:
 		speak(str(int(me.health))+" HP")
 	if symbol == key.L:
